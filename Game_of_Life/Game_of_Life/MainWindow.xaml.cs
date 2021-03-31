@@ -23,6 +23,8 @@ namespace Game_of_Life
         public MainWindow()
         {
             InitializeComponent();
+
+            // Testkommentar
         }
     }
 }
