@@ -24,7 +24,14 @@ namespace Game_of_Life
         {
             InitializeComponent();
 
-            // Testkommentar
+            gameboard.ColumnDefinitions.Add(new ColumnDefinition());
+            gameboard.ColumnDefinitions.Add(new ColumnDefinition());
+            gameboard.ColumnDefinitions.Add(new ColumnDefinition());
+            gameboard.RowDefinitions.Add(new RowDefinition());
+            gameboard.RowDefinitions.Add(new RowDefinition());
+            gameboard.RowDefinitions.Add(new RowDefinition());
+
+            gameboard.Background = new SolidColorBrush(Color.FromRgb(0, 200, 0));
         }
     }
 }
