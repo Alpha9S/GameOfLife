@@ -8,7 +8,8 @@
         Title="MainWindow" Height="1000" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition>
+            </ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -33,5 +34,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <!-- Kleiner Test -->
+        <Ellipse Grid.Column="0" Grid.Row="0" Fill="Black" Width="80" Height="80"></Ellipse>
     </Grid>
 </Window>
