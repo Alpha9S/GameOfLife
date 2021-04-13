@@ -29,7 +29,6 @@ namespace Game_of_Life
         {
             InitializeComponent();
 
-
             for(int i = 0; i < gridColumns; i++)
             {
                 gameboard.ColumnDefinitions.Add(new ColumnDefinition());
@@ -39,11 +38,9 @@ namespace Game_of_Life
 
                 for (int x = 0; x < gridRows; x++)
                 {
-                    cells[i][x] = new Cell(x, y);
+                    cells[i][x] = new Cell(x, i);
                 }
             }
-
-            
 
             gameboard.Background = new SolidColorBrush(Color.FromRgb(50, 100, 150));
         }
