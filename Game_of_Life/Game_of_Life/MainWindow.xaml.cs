@@ -16,13 +16,13 @@ namespace Game_of_Life
 
         public MainWindow()
         {
+            Grid grid = new Grid();
             InitializeComponent();
+
+
 
             for(int i = 0; i < gridColumns; i++)
             {
-                gameboard.ColumnDefinitions.Add(new ColumnDefinition());
-                gameboard.RowDefinitions.Add(new RowDefinition());
-
                 cells[i] = new Cell[9];
 
                 for (int x = 0; x < gridRows; x++)
