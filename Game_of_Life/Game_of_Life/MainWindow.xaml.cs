@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Game_of_Life
 {
@@ -24,7 +25,7 @@ namespace Game_of_Life
             InitializeComponent();
 
             // Setze Hintergrundfarbe
-            test.Background = new SolidColorBrush(Color.FromRgb(50, 100, 150));
+            test.Background = new SolidColorBrush(Color.FromRgb(230, 200, 200));
 
             // Add columns to the grid
             for(int i = 0; i < gridColumns; i++)
@@ -38,29 +39,41 @@ namespace Game_of_Life
                 test.RowDefinitions.Add(new RowDefinition());
             }
 
-            // Fill in the coordinates of the cells into the array 
-            // and create a border around the cells
+            // iterates for every row in the grid
             for (int x = 0; x < gridRows; x++)
             {
                 // create new row for the array
                 cells[x] = new Cell[gridColumns];
 
+                // iterates for every column in the grid
                 for (int y = 0; y < gridRows; y++)
                 {
-                    // creates a new cell object and saves it inside the array
-                    cells[x][y] = new Cell(x, y);
+                    // creates a new cell object and saves it inside the cell array
+                    cells[x][y] = new Cell(x, y, false);
                     // create a new border
                     Border border = new Border();
-                    // add border to grid
+                    // create new circle
+                    Ellipse circle = new Ellipse();
+                    // sets the color of the circle border and the filling
+                    circle.Stroke = Brushes.Black;
+                    circle.Fill = Brushes.White;
+                    // sets the thickness of the circle border
+                    circle.StrokeThickness = 2;
+                    // sets the margin between circle and border
+                    circle.Margin = new Thickness(8);
+                    // add border and circle to the grid children
                     test.Children.Add(border);
+                    test.Children.Add(circle);
                     // border color
                     border.BorderBrush = Brushes.Black;
                     // border thickness
                     border.BorderThickness = new Thickness(1);
-                    // set x coordinate for the border
+                    // set x and y coordinates for the border
                     border.SetValue(Grid.RowProperty, x);
-                    // set y coordinate for the border
                     border.SetValue(Grid.ColumnProperty, y);
+                    // set x and y coordinates for the circle
+                    circle.SetValue(Grid.RowProperty, x);
+                    circle.SetValue(Grid.ColumnProperty, y);
                 }
             }
 
@@ -69,7 +82,7 @@ namespace Game_of_Life
             {
                 for (int y = 0; y < gridRows; y++)
                 {
-                    Console.WriteLine("X: " + cells[x][y].x + " Y: " + cells[x][y].y);
+                    Console.WriteLine("X: " + cells[x][y].getX + " Y: " + cells[x][y].getY);
                 }
             }
         }
