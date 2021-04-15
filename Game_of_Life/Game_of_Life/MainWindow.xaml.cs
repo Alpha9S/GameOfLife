@@ -10,44 +10,56 @@ namespace Game_of_Life
     /// </summary>
     public partial class MainWindow : Window
     {
-        int gridColumns = 9;
-        int gridRows = 9;
-        
-        // create an array for the coordinates of the cells
-        private Cell[][] cells = new Cell[9][];
+        private int gridColumns = 11;
+        private int gridRows = 11;
 
         public MainWindow()
         {
+            // create an array for the coordinates of the cells
+            Cell[][] cells = new Cell[gridRows][];
+
             InitializeComponent();
 
-            // Fill in the coordinates of the cells into the array
-            for (int x = 0; x < gridRows; x++)
-            {
-                cells[x] = new Cell[9];
 
-                for (int y = 0; y < gridRows; y++)
-                {
-                    cells[x][y] = new Cell(x, y);
-                }
-            }
-
-            // create a new grid
-            Grid grid = new Grid();
-            // zeige Trennlinien beim Grid
-            grid.ShowGridLines = true;
             // Setze Hintergrundfarbe
-            grid.Background = new SolidColorBrush(Color.FromRgb(50, 100, 150));
+            test.Background = new SolidColorBrush(Color.FromRgb(50, 100, 150));
 
             // create columns for the grid
             for(int i = 0; i < gridColumns; i++)
             {
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                test.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
             // create rows for the grid
             for (int i = 0; i < gridRows; i++)
             {
-                grid.RowDefinitions.Add(new RowDefinition());
+                test.RowDefinitions.Add(new RowDefinition());
+            }
+
+            // Fill in the coordinates of the cells into the array 
+            // and create a border around the cells
+            for (int x = 0; x < gridRows; x++)
+            {
+                // create new row for the array
+                cells[x] = new Cell[gridColumns];
+
+                for (int y = 0; y < gridRows; y++)
+                {
+                    // creates a new cell object and saves it inside the array
+                    cells[x][y] = new Cell(x, y);
+                    // create a new border
+                    Border border = new Border();
+                    // add border to grid
+                    test.Children.Add(border);
+                    // border color
+                    border.BorderBrush = Brushes.Black;
+                    // border thickness
+                    border.BorderThickness = new Thickness(1);
+                    // set x coordinate for the border
+                    border.SetValue(Grid.RowProperty, x);
+                    // set y coordinate for the border
+                    border.SetValue(Grid.ColumnProperty, y);
+                }
             }
 
             for (int x = 0; x < gridColumns; x++)
@@ -57,8 +69,6 @@ namespace Game_of_Life
                     Console.WriteLine("X: " + cells[x][y].x + " Y: " + cells[x][y].y);
                 }
             }
-
-            
         }
     }
 }
