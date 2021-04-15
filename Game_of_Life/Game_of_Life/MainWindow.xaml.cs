@@ -10,7 +10,9 @@ namespace Game_of_Life
     /// </summary>
     public partial class MainWindow : Window
     {
+        // amount of grid columns
         private int gridColumns = 11;
+        // amount of grid rows
         private int gridRows = 11;
 
         public MainWindow()
@@ -18,19 +20,19 @@ namespace Game_of_Life
             // create an array for the coordinates of the cells
             Cell[][] cells = new Cell[gridRows][];
 
+            // loads in XAML elements for usage
             InitializeComponent();
-
 
             // Setze Hintergrundfarbe
             test.Background = new SolidColorBrush(Color.FromRgb(50, 100, 150));
 
-            // create columns for the grid
+            // Add columns to the grid
             for(int i = 0; i < gridColumns; i++)
             {
                 test.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            // create rows for the grid
+            // Add rows for the grid
             for (int i = 0; i < gridRows; i++)
             {
                 test.RowDefinitions.Add(new RowDefinition());
@@ -62,6 +64,7 @@ namespace Game_of_Life
                 }
             }
 
+            // Console output for the coordinates of the cell objects
             for (int x = 0; x < gridColumns; x++)
             {
                 for (int y = 0; y < gridRows; y++)
