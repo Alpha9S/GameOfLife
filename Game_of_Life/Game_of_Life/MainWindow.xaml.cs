@@ -5,7 +5,11 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-
+/// <summary>
+/// Version 0.1
+/// Author: Hikmet Özer
+/// Author: Leon Hoppe
+/// </summary>
 namespace Game_of_Life
 {
     /// <summary>
