@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+
 
 namespace Game_of_Life
 {
@@ -11,16 +13,15 @@ namespace Game_of_Life
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Random random = new Random();
+        private int gridColumns = 11;
+        private int gridRows = 11;
+        private Cell[][] cells;
 
         public MainWindow()
         {
-            int gridColumns = 11;
-            int gridRows = 11;
-
-            Random random = new Random();
-
             // create an array for the coordinates of the cells
-            Cell[][] cells = new Cell[gridRows][];
+            cells = new Cell[gridRows][];
 
             // loads in XAML elements for usage
             InitializeComponent();
@@ -91,11 +92,39 @@ namespace Game_of_Life
                     {
                         circle.Fill = Brushes.White;
                     }
-                }
-            }
 
+                    
+                    
+                } // end of for
+            } // end of for
 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Start();
+        } // end of method
 
-        }
-    }
-}
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // iterates for every row in the grid
+            for (int x = 0; x < gridRows; x++)
+            {
+                // iterates for every column in the grid
+                for (int y = 0; y < gridColumns; y++)
+                {
+                    if (random.Next(2) == 1)
+                    {
+                        cells[x][y].Condition = true;
+                        cells[x][y].Circle.Fill = Brushes.Black;
+
+                    }
+                    else
+                    {
+                        cells[x][y].Condition = false;
+                        cells[x][y].Circle.Fill = Brushes.White;
+                    }
+                } // end of for
+            } // end of for
+        } // end of method
+    } // end of class
+} // end of namespace
