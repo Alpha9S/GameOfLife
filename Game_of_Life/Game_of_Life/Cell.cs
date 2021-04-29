@@ -11,7 +11,7 @@ namespace Game_of_Life
         public Cell(int x, int y, bool condition){
             this.x = x;
             this.y = y;
-            this.condition = false;
+            this.condition = condition;
         }
 
         /// <summary>
