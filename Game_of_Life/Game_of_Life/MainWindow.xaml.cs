@@ -81,19 +81,9 @@ namespace Game_of_Life
 
                     // hands over the circle object to the cell object
                     cells[x][y].Circle = circle;
-                }
-            }
 
-            // sets the color of the circles depending
-            // on their conditions
-            for (int x = 0; x < gridRows; x++)
-            {
-                for(int y = 0; y < gridColumns; y++)
-                {
-                    Cell thisCell = cells[x][y];
-                    Ellipse circle = thisCell.Circle;
-
-                    if (thisCell.Condition)
+                    // fills the circles with color
+                    if (cells[x][y].Condition)
                     {
                         circle.Fill = Brushes.Black;
                     }
@@ -103,6 +93,9 @@ namespace Game_of_Life
                     }
                 }
             }
+
+
+
         }
     }
 }
