@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace Game_of_Life
 {
@@ -10,25 +7,45 @@ namespace Game_of_Life
     {
         private int x, y;
         private bool condition;
+        private Ellipse circle;
         public Cell(int x, int y, bool condition){
             this.x = x;
             this.y = y;
             this.condition = false;
         }
 
-        public int getX
+        /// <summary>
+        /// getter for the y property
+        /// </summary>
+        public int X
         {
             get { return this.x; }
         }
 
-        public int getY
+        /// <summary>
+        /// getter for the x property
+        /// </summary>
+        public int Y
         {
             get { return this.y; }
         }
 
-        public bool getCondition
+        /// <summary>
+        /// getter and setter for the condition property
+        /// </summary>
+        public bool Condition
         {
-            get { return this.condition; }
+            get { return condition; }
+            set { condition = value; }
+        }
+
+        /// <summary>
+        /// getter and setter for the circle property
+        /// </summary>
+        public Ellipse Circle
+        {
+            get { return circle; }
+            set { circle = value; }
         }
     }
 }
