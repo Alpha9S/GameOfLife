@@ -26,7 +26,7 @@ namespace Game_of_Life
             InitializeComponent();
 
             // Set backgroundcolor
-            grid.Background = new SolidColorBrush(Color.FromRgb(230, 200, 200));
+            grid.Background = Brushes.White;
 
             // Add columns to the grid
             for(int i = 0; i < gridColumns; i++)
@@ -71,10 +71,6 @@ namespace Game_of_Life
                     // set x and y coordinates for the circle
                     circle.SetValue(Grid.RowProperty, x);
                     circle.SetValue(Grid.ColumnProperty, y);
-
-                    // circle border color and thickness
-                    circle.Stroke = Brushes.Black;
-                    circle.StrokeThickness = 2;
 
                     // cell border color and thickness
                     border.BorderBrush = Brushes.Black;
