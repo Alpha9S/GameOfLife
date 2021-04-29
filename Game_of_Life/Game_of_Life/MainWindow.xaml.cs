@@ -99,7 +99,7 @@ namespace Game_of_Life
             } // end of for
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
         } // end of method
