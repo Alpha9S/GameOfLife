@@ -19,8 +19,6 @@ namespace Game_of_Life
     {
         private static int gridColumns = 11;
         private static int gridRows = 11;
-        private Random random = new Random();
-        private Cell[][] cells;
         private DispatcherTimer timer = new DispatcherTimer();
         private Game game = new Game(gridRows, gridColumns);
 
