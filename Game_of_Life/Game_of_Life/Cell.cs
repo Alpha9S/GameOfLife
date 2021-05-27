@@ -6,12 +6,12 @@ namespace Game_of_Life
     class Cell
     {
         private int x, y;
-        private bool condition;
+        private bool isAlive;
         private Ellipse circle;
         public Cell(int x, int y, bool condition){
             this.x = x;
             this.y = y;
-            this.condition = condition;
+            this.isAlive = condition;
         }
 
         /// <summary>
@@ -33,10 +33,10 @@ namespace Game_of_Life
         /// <summary>
         /// getter and setter for the condition property
         /// </summary>
-        public bool Condition
+        public bool IsAlive
         {
-            get { return condition; }
-            set { condition = value; }
+            get { return isAlive; }
+            set { isAlive = value; }
         }
 
         /// <summary>

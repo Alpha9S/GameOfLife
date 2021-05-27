@@ -2,11 +2,9 @@
 using System.Windows;
 using System.Windows.Threading;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 /// <summary>
-/// Version 0.2
+/// Version 0.3
 /// Author: Hikmet Özer
 /// Author: Leon Hoppe
 /// </summary>
@@ -41,21 +39,33 @@ namespace Game_of_Life
             }
 
             game.Grid = grid;
-            game.Cell_Generation();
-            Add_Events();
+            game.CellGeneration();
+            game.RandomCellGeneration();
+            AddEvents();
         } // end of method
 
-        private void Add_Events()
+        private void AddEvents()
         {
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
-            timer.Tick += new EventHandler(game.Game_Tick);
+            timer.Tick += new EventHandler(game.GameTick);
             timer.Start();
 
             Button button = start_button;
-            // button.Click += new RoutedEventHandler();
+            button.Click += new RoutedEventHandler(GameStartAndStop);
         }
 
+        private void GameStartAndStop(object sender, RoutedEventArgs e)
+        {
+            if (timer.IsEnabled)
+            {
+                timer.Stop();
+            }
+            else
+            {
+                timer.Start();
+            }
+        }
        
     } // end of class
 } // end of namespace
